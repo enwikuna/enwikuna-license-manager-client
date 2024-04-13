@@ -41,8 +41,10 @@ jobs:
           pwd
           zip -r ../$PLUGIN_NAME/$PLUGIN_NAME.zip $PLUGIN_NAME
           pwd
+          ls
           cd ../$PLUGIN_NAME
           pwd
+          ls
 
       - name: Upload release ZIP artifact
         uses: actions/upload-artifact@v2
