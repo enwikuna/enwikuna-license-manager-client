@@ -40,14 +40,9 @@ jobs:
           zip -r ../$PLUGIN_NAME/$PLUGIN_NAME.zip $PLUGIN_NAME
           cd ../$PLUGIN_NAME
 
-      - name: Upload release ZIP artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ env.PLUGIN_NAME }}.zip
-          path: ${{ github.workspace }}/${{ env.PLUGIN_NAME }}.zip
-
   release:
     name: Release
+    id: create_release
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -60,3 +55,13 @@ jobs:
           release_name: ${{ github.ref_name }}
           body: "Release ${{ github.ref_name }} of Enwikuna License Manager Client"
           draft: false
+
+      - name: Upload release assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${{ env.PLUGIN_NAME }}.zip
+          asset_name: ${{ env.PLUGIN_NAME }}.zip
+          asset_content_type: application/zip
