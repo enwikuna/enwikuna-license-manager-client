@@ -8,6 +8,9 @@ on:
 env:
   PLUGIN_NAME: "enwikuna-license-manager-client"
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build
