@@ -40,11 +40,23 @@ jobs:
           zip -r ../$PLUGIN_NAME/$PLUGIN_NAME.zip $PLUGIN_NAME
           cd ../$PLUGIN_NAME
 
+      - name: Upload release ZIP artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.PLUGIN_NAME }}.zip
+          path: ${{ github.workspace }}/${{ env.PLUGIN_NAME }}.zip
+
   release:
     name: Release
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download release ZIP artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ env.PLUGIN_NAME }}.zip
+          path: ${{ github.workspace }}
+
       - name: Create GitHub release
         id: create_release
         uses: actions/create-release@v1
