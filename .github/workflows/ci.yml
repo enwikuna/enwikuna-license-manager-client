@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -46,6 +47,7 @@ jobs:
           path: ${{ github.workspace }}/${{ env.PLUGIN_NAME }}.zip
 
   release:
+    name: Release
     needs: build
     runs-on: ubuntu-latest
     steps:
