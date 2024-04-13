@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.PLUGIN_NAME }}
-          path: ${{ github.workspace }}/prepack/$PLUGIN_NAME.zip
+          path: ${{ github.workspace }}/prepack/$PLUGIN_NAME/$PLUGIN_NAME.zip
 
       - name: Create GitHub release
         uses: actions/create-release@v1
