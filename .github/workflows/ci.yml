@@ -8,14 +8,9 @@ on:
 env:
   PLUGIN_NAME: "enwikuna-license-manager-client"
 
-permissions:
-  contents: write
-
 jobs:
-  build-release:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -47,6 +42,10 @@ jobs:
           name: ${{ env.PLUGIN_NAME }}.zip
           path: ${{ github.workspace }}/${{ env.PLUGIN_NAME }}.zip
 
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Create GitHub release
         uses: actions/create-release@v1
         env:
