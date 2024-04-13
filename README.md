@@ -18,7 +18,7 @@ The idea behind the Enwikuna License Manager Client is to provide a simple and e
 don't need to implement your own client for the Enwikuna License Manager REST API. It's specially made to manage
 themes & plugins inside WordPress by using standard WordPress functions and hooks.
 
-Display image of the dashboard here
+![Enwikuna License Manager Client](https://agency.enwikuna.de/wp-content/uploads/enwikuna-license-manager-client.png)
 
 ## Features
 
