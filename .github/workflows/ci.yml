@@ -39,17 +39,15 @@ jobs:
         run: |
           cd ../prepack
           zip -r ../$PLUGIN_NAME/$PLUGIN_NAME.zip $PLUGIN_NAME
-          pwd
-          ls -la
           cd ../$PLUGIN_NAME
 
       - name: Upload release ZIP artifact
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.PLUGIN_NAME }}
-          path: ${{ github.workspace }}/$PLUGIN_NAME.zip
+          path: ${{ github.workspace }}/prepack/$PLUGIN_NAME.zip
 
-      - name: Create GitHub Release
+      - name: Create GitHub release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
