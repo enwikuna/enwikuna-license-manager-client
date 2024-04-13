@@ -24,7 +24,7 @@ jobs:
         uses: php-actions/composer@v6
         with:
           php_version: '7.4'
-          php_extension: zip
+          php_extensions: zip
           dev: no
 
       - name: Create prepack folder
@@ -41,6 +41,7 @@ jobs:
           zip -r ../$PLUGIN_NAME/$PLUGIN_NAME.zip $PLUGIN_NAME
           cd ../$PLUGIN_NAME
           pwd
+          ls -la
 
       - name: Upload release ZIP artifact
         uses: actions/upload-artifact@v2
