@@ -44,7 +44,7 @@ jobs:
       - name: Upload release ZIP artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ env.PLUGIN_NAME }}
+          name: ${{ env.PLUGIN_NAME }}.zip
           path: ${{ github.workspace }}/${{ env.PLUGIN_NAME }}.zip
 
       - name: Create GitHub release
