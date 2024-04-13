@@ -38,8 +38,11 @@ jobs:
       - name: Create release ZIP artifact
         run: |
           cd ../prepack
+          pwd
           zip -r ../$PLUGIN_NAME/$PLUGIN_NAME.zip $PLUGIN_NAME
+          pwd
           cd ../$PLUGIN_NAME
+          pwd
 
       - name: Upload release ZIP artifact
         uses: actions/upload-artifact@v2
