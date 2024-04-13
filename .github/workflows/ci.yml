@@ -3,10 +3,13 @@ name: Build and release
 on:
   push:
     tags:
-      - '*'
-      -
+      - 'v*'
+
 env:
   PLUGIN_NAME: "enwikuna-license-manager-client"
+
+permissions:
+  contents: write
 
 jobs:
   build-release:
