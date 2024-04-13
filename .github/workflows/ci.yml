@@ -39,9 +39,9 @@ jobs:
         run: |
           cd ../prepack
           zip -r ../$PLUGIN_NAME/$PLUGIN_NAME.zip $PLUGIN_NAME
-          cd ../$PLUGIN_NAME
           pwd
           ls -la
+          cd ../$PLUGIN_NAME
 
       - name: Upload release ZIP artifact
         uses: actions/upload-artifact@v2
