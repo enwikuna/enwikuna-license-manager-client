@@ -8,6 +8,9 @@ on:
 env:
   PLUGIN_NAME: "enwikuna-license-manager-client"
 
+permissions:
+  contents: write
+
 jobs:
   build-release:
     runs-on: ubuntu-latest
@@ -43,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.PLUGIN_NAME }}
-          path: ${{ github.workspace }}/$PLUGIN_NAME/$PLUGIN_NAME.zip
+          path: ${{ github.workspace }}/$PLUGIN_NAME.zip
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
