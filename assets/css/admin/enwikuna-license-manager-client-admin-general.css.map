@@ -1,0 +1,1 @@
+{"version":3,"sources":["enwikuna-license-manager-client-admin-general.css"],"names":[],"mappings":"AAAA;;EAEE;AACF;EACE,0BAA0B;AAC5B","file":"enwikuna-license-manager-client-admin-general.css","sourcesContent":["/**\n * Enwikuna License Manager Client admin general styles\n */\n.notice.elmc-notice.notice-info {\n  border-left-color: #b4004e;\n}\n"]}

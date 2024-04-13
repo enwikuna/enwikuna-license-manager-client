@@ -1,0 +1,253 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Enwikuna License Manager Client\n"
+"POT-Creation-Date: 2024-04-13 18:20+0200\n"
+"PO-Revision-Date: 2024-04-11 00:18+0200\n"
+"Last-Translator: Johannes Gmelin <info@enwikuna.de>\n"
+"Language-Team: Johannes Gmelin <info@enwikuna.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: enwikuna-license-manager-client.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#: includes/abstracts/abstract-class-elmc-singleton.php:38
+#: includes/abstracts/abstract-class-elmc-singleton.php:45
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:307
+msgid ""
+"Enwikuna License Manager Client must be network activated when in multisite "
+"environment!"
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:338
+#, php-format
+msgid ""
+"It seems like the Updates & Support of one of your %1$s products will expire "
+"soon:"
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:342
+msgid "Update & Support expires"
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:355
+#: includes/admin/class-elmc-admin-notices.php:408
+msgid "check"
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:361
+#, php-format
+msgid ""
+"Your <strong>%1$s</strong> license doesn't seem to be registered. Please "
+"%2$s your license."
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:363
+#, php-format
+msgid ""
+"Your <strong>%1$s</strong> license seems to have expired. Please %2$s your "
+"license."
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:408
+#, php-format
+msgid ""
+"Your <strong>%1$s</strong> license seems to have expired. Please %2$s your "
+"license before updating."
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:432
+msgid ""
+"Enwikuna License Manager Client is updating in the background. The update "
+"process may take a little while, so please be patient. Some functions may be "
+"not working correctly until the update is finished."
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:435
+msgid ""
+"Note: WP CRON has been disabled on your install which may prevent this "
+"update from completing."
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:441
+msgid "Enwikuna License Manager Client is updating"
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:448
+msgid ""
+"Enwikuna License Manager Client update completed. Thank you for updating to "
+"the latest version!"
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:458
+msgid ""
+"<strong>Enwikuna License Manager Client is inactive.</strong> The required "
+"configuration is missing for Enwikuna License Manager Client to work. Please "
+"contact our support for further assistance!"
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:463
+msgid "Enwikuna License Manager Client is not configured"
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:476
+#, php-format
+msgid ""
+"Enwikuna License Manager Client needs to connect to %1$s to check for new "
+"releases and security updates. Something in the network or security settings "
+"is preventing this. Please allow outgoing communication to %2$s to remove "
+"this notice."
+msgstr ""
+
+#: includes/admin/class-elmc-admin-notices.php:481
+#, php-format
+msgid "Enwikuna License Manager Client is unable to connect to %1$s"
+msgstr ""
+
+#: includes/admin/class-elmc-admin.php:183
+#, php-format
+msgid "Your <strong>%1$s</strong> license was successfully deactivated."
+msgstr ""
+
+#: includes/admin/class-elmc-admin.php:187
+#, php-format
+msgid ""
+"An error occurred while deactivating your <strong>%1$s</strong> license."
+msgstr ""
+
+#: includes/admin/class-elmc-admin.php:229
+#, php-format
+msgid "<strong>%1$s</strong> from <strong>%2$s license</strong> activated."
+msgid_plural ""
+"<strong>%1$s</strong> from <strong>%2$s licenses</strong> activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-elmc-admin.php:240
+msgid "Action failed. Please refresh the page and retry."
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:33
+msgid "Product"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:34
+msgid "Version"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:35
+msgid "Support & Updates until"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:36
+msgid "Note"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:37
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:230
+msgid "Setup Wizard"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:38
+msgid "License"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:89
+msgid "Register products"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:171
+msgid "Newest version:"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:174
+msgid "Check for updates"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:195
+msgid "Renew now"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:215
+msgid ""
+"Your license has been locked! Please contact our support for further "
+"information."
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:264
+msgid "Deactivate"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:266
+msgid "Enter license key"
+msgstr ""
+
+#: includes/admin/products/list-tables/class-elmc-admin-products-list-table.php:284
+msgid "No products found."
+msgstr ""
+
+#: includes/class-elmc-updater.php:118
+msgid "Important"
+msgstr ""
+
+#: includes/functions/elmc-core-functions.php:14
+#, php-format
+msgid "%s does not exist."
+msgstr ""
+
+#: templates/admin/pages/dashboard.php:12
+#, php-format
+msgid "Welcome to %1$s"
+msgstr ""
+
+#: templates/admin/pages/dashboard.php:14
+#, php-format
+msgid ""
+"Easily manage your licenses for %1$s products and enjoy automatic updates."
+msgstr ""
+
+#: templates/admin/pages/dashboard.php:26
+msgid "Oops, seems like the API needs a break"
+msgstr ""
+
+#: templates/admin/pages/dashboard.php:27
+msgid ""
+"Sorry but currently we are not able to establish a connection to our "
+"licensing system - please be patient and try again in a few minutes."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Enwikuna License Manager Client"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/enwikuna/enwikuna-license-manager-client"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Will help customers to manage their licenses provided by the Enwikuna "
+"License Manager and receive automatic updates via releases."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Enwikuna"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://agency.enwikuna.de"
+msgstr ""

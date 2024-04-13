@@ -1,0 +1,58 @@
+{
+  "name": "enwikuna/enwikuna-license-manager-client",
+  "description": "Will help customers to manage their licenses provided by the Enwikuna License Manager and receive automatic updates via releases.",
+  "homepage": "https://agency.enwikuna.de",
+  "version": "1.0.0",
+  "license": [
+    "GPL-3.0-or-later"
+  ],
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "Johannes F. Gmelin",
+      "email": "info@enwikuna.de",
+      "role": "Developer & CEO"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "includes/"
+    ],
+    "psr-4": {
+      "Enwikuna\\Enwikuna_License_Manager_Client\\": [
+        "includes/"
+      ]
+    }
+  },
+  "scripts": {
+    "phpcs": [
+      "phpcs -s -p"
+    ],
+    "phpcs-pre-commit": [
+      "phpcs -s -p -n"
+    ],
+    "phpcbf": [
+      "phpcbf -p"
+    ],
+    "php-cs-fixer-go-yoda": [
+      "php-cs-fixer fix ./ --rules=yoda_style"
+    ]
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "allow-plugins": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "require": {
+    "php": ">=7.4",
+    "automattic/jetpack-constants": "*",
+    "defuse/php-encryption": "^2.3.1"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "squizlabs/php_codesniffer": "^3.7.2",
+    "woocommerce/woocommerce-sniffs": "^0.1.3",
+    "friendsofphp/php-cs-fixer": ">=v3.15.1"
+  }
+}

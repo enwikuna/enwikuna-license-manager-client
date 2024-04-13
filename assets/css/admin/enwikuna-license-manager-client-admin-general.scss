@@ -1,0 +1,11 @@
+/**
+ * Enwikuna License Manager Client admin general styles
+ */
+
+$main-color: #b4004e;
+
+.notice.elmc-notice {
+  &.notice-info {
+    border-left-color: $main-color;
+  }
+}

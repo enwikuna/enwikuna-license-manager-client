@@ -1,0 +1,114 @@
+/**
+ * General Enwikuna License Manager Client admin styles. Dashboard etc.
+ */
+
+#wpcontent {
+  position: relative;
+
+  .wrap {
+    &.elmc {
+      .elmc-page-content {
+        #elmc-dashboard-header {
+          > h1 {
+            font-size: 38px;
+            letter-spacing: 2px;
+          }
+
+          #elmc-dashboard-about {
+            color: #555d66;
+            margin: 18px 0;
+            font-size: 18px;
+          }
+        }
+
+        #elmc-dashboard-content {
+          margin-top: 25px;
+
+          #api-unavailable {
+            > h3 {
+              font-size: 20px;
+            }
+
+            > p {
+              font-size: 16px;
+            }
+          }
+
+          .wp-list-table td {
+            &.column-name .host {
+              font-size: 10px;
+            }
+
+            &.column-license input {
+              margin-bottom: 3px;
+            }
+
+            &.column-note {
+              max-width: 150px;
+            }
+
+            &.column-version {
+              .version {
+                background: rgb(238, 238, 238);
+                padding: 3px 6px;
+                border-radius: 3px;
+                margin-right: 5px;
+
+                &.version-old {
+                  background: #eba3a3;
+                  color: #761919;
+                }
+
+                &.version-latest {
+                  background: #c6e1c6;
+                  color: #5b841b;
+                }
+              }
+
+              .button.button-secondary {
+                margin-top: 10px;
+              }
+            }
+
+            &.column-license {
+              .license-key {
+                display: inline-block;
+                border-radius: 3px;
+                padding: 5px 10px;
+                line-height: 23px;
+                margin-bottom: 10px;
+              }
+            }
+          }
+        }
+
+        #log-viewer {
+          background: #fff;
+          border: 1px solid #e5e5e5;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+          padding: 5px 20px;
+
+          > pre {
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+          }
+        }
+
+        #debugger-actions-wrapper {
+          margin-bottom: 16px;
+        }
+      }
+    }
+
+    .plugins .notice .elmc-upgrade-notice {
+      border-top: 1px solid #ffb900;
+      margin: 0 -12px;
+      padding: 0.5em 0 0.5em 12px;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
