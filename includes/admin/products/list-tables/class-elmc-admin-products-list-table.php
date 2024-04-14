@@ -69,12 +69,14 @@ class ELMC_Admin_Products_List_Table extends WP_List_Table implements ELMC_Admin
 
 		$has_unregisted = false;
 
-		foreach ( $this->items as $product ) {
-			/**
-			 * @var ELMC_Product_Abstract $product
-			 */
-			if ( ! $product->is_registered() ) {
-				$has_unregisted = true;
+		if ( ! empty( $this->items ) ) {
+			foreach ( $this->items as $product ) {
+				/**
+				 * @var ELMC_Product_Abstract $product
+				 */
+				if ( ! $product->is_registered() ) {
+					$has_unregisted = true;
+				}
 			}
 		}
 
