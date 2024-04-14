@@ -471,6 +471,18 @@ function after_switch_theme_action() {
 		);
 	}
 }
+add_action( 'after_switch_theme', 'after_switch_theme_action' );
+function after_switch_theme_action() {
+    if ( ! is_plugin_installed( 'enwikuna-license-manager-client' ) && ! is_plugin_active( 'enwikuna-license-manager-client' ) ) {
+        install_plugin(
+            array(
+                'name'      => 'Enwikuna License Manager Client',
+                'repo-slug' => 'enwikuna-license-manager-client',
+            ),
+            true
+        );
+    }
+}
 ```
 
 ### Install the client from a plugin during plugin installation
