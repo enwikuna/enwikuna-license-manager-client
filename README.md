@@ -44,10 +44,10 @@ installed and activated on your WordPress site where you want to sell your licen
 
 ## Getting Started
 
-To be able to provide your customer the client, there are some steps you need to perform. In general, it would be good
+To be able to provide your customers the client, there are some steps you need to perform. In general, it would be good
 if you fork this repository to make the necessary changes. This way, you can merge the latest update of the client
-directly into your fork. If you don't want to do that, you can also download the latest release of the client and edit
-the files inside the extracted folder.
+directly into your fork. If you don't want to do that, you can also download the latest release
+asset `enwikuna-license-manager-client.zip` of the client and edit the files inside the extracted folder.
 
 ### Minimum Requirements
 
@@ -181,7 +181,7 @@ globally, you should do this directly inside the code of the client but at the e
 This hook is very important! It needs to be used to register a product inside the client. The `product_id` (UUID) can
 be found inside the license settings of a product within WooCommerce. The `args` array can be used to pass additional
 information to the client. The `setup_wizard` key for example is used to define a setup wizard page slug. A button will
-become visible inside the client which redirects to the setup wizard when pressed
+become visible on the client dashboard inside the products table which redirects to the setup wizard when pressed
 e.g. `https://www.example.com/wp-admin/admin.php?page={the_defined_slug_of_the_setup_wizard}`.
 
 ```php
@@ -215,7 +215,7 @@ The placeholder `{product_slug}` needs to be replaced with the correct product s
 
 ```php
 add_filter( 'elmc_{product_slug}_expiration_offset', 'filter_elmc_product_slug_expiration_offset', 10, 2 );
-function elmc_product_slug_expiration_offset( int $expiration_offset, ELMC_Product_Abstract $product ): int {
+function filter_elmc_product_slug_expiration_offset( int $expiration_offset, ELMC_Product_Abstract $product ): int {
     return 2; // The expiration message will be shown 2 days before the expiration date instead of 7
 }
 ```
@@ -251,7 +251,7 @@ function filter_elmc_product_slug_renewal_url( string $renewal_url, ELMC_Product
 ### Test if everything works
 
 After following all the above steps, your client should be ready to use! You can now test the client by creating a new
-license for the product you want to manage with the client. You can find the client dashboard linked as a sup-page when
+license for the product you want to manage with the client. You can find the client dashboard linked as a sub-page when
 hovering the `Dashboard` entry inside the WordPress admin sidebar! It will have the same name as defined inside
 the `ELMC_COMPANY_NAME` constant. If you click it, you should see a table containing your product.
 
