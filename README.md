@@ -187,23 +187,23 @@ e.g. `https://www.example.com/wp-admin/admin.php?page={the_defined_slug_of_the_s
 ```php
 add_filter( 'elmc_updatable_products', 'filter_elmc_updatable_products' );
 function filter_elmc_updatable_products( array $products ): array {
-	// Register a plugin
-	$products[ plugin_basename( __FILE__ ) ] = array(
-		'product_id' => '00000000-0000-0000-0000-000000000000',
-		'args'       => array(
-			'setup_wizard' => 'setup-wizard-page',
-		),
-	);
+    // Register a plugin
+    $products[ plugin_basename( __FILE__ ) ] = array(
+        'product_id' => '00000000-0000-0000-0000-000000000000',
+        'args'       => array(
+            'setup_wizard' => 'setup-wizard-page',
+        ),
+    );
 
-	// Register a theme
-	$products[ trailingslashit( get_template() ) . 'style.css' ] = array(
-		'product_id' => '00000000-0000-0000-0000-000000000000',
-		'args'       => array(
-			'setup_wizard' => 'setup-wizard-page',
-		),
-	);
+    // Register a theme
+    $products[ trailingslashit( get_template() ) . 'style.css' ] = array(
+        'product_id' => '00000000-0000-0000-0000-000000000000',
+        'args'       => array(
+            'setup_wizard' => 'setup-wizard-page',
+        ),
+    );
 
-	return $products;
+    return $products;
 }
 ```
 
@@ -216,7 +216,7 @@ The placeholder `{product_slug}` needs to be replaced with the correct product s
 ```php
 add_filter( 'elmc_{product_slug}_expiration_offset', 'filter_elmc_product_slug_expiration_offset', 10, 2 );
 function elmc_product_slug_expiration_offset( int $expiration_offset, ELMC_Product_Abstract $product ): int {
-	return 2; // The expiration message will be shown 2 days before the expiration date instead of 7
+    return 2; // The expiration message will be shown 2 days before the expiration date instead of 7
 }
 ```
 
@@ -229,8 +229,8 @@ replaced with the correct product slug of the product.
 ```php
 add_filter( 'elmc_{product_slug}_updater_plugin_icon', 'filter_elmc_product_slug_updater_plugin_icon' );
 function filter_elmc_product_slug_updater_plugin_icon(): string {
-	// File URL to your plugin SVG icon - below an example
-	return untrailingslashit( plugins_url( DIRECTORY_SEPARATOR, __FILE__ ) ) . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icons' . DIRECTORY_SEPARATOR . 'plugin-icon.svg';
+    // File URL to your plugin SVG icon - below an example
+    return untrailingslashit( plugins_url( DIRECTORY_SEPARATOR, __FILE__ ) ) . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icons' . DIRECTORY_SEPARATOR . 'plugin-icon.svg';
 }
 ```
 
@@ -244,7 +244,7 @@ product slug of the product.
 ```php
 add_filter( 'elmc_{product_slug}_renewal_url', 'filter_elmc_product_slug_renewal_url', 10, 2 );
 function filter_elmc_product_slug_renewal_url( string $renewal_url, ELMC_Product_Abstract $product ): string {
-	return 'https://www.example.com/renew/' . $product->get_slug();
+    return 'https://www.example.com/renew/' . $product->get_slug();
 }
 ```
 
@@ -280,176 +280,176 @@ following code example. It will download the latest build of the client and inst
 // Register the plugin inside the WordPress plugin repository
 add_filter( 'plugins_api', 'filter_plugins_api', 10, 3 );
 function filter_plugins_api( $result, string $action, object $args ) {
-	$download_url = 'https://www.example.com/wp-content/uploads/plugins/enwikuna-license-manager-client.zip';
-	
-	if ( 'plugin_information' !== $action || false !== $result || ! isset( $args->slug ) || 'enwikuna-license-manager-client' !== $args->slug ) {
-		return $result;
-	}
-	
-	$result                = new stdClass();
-	$result->name          = 'Enwikuna License Manager Client';
-	$result->version       = '';
-	$result->download_link = esc_url( $download_url );
-	
-	return $result;
+    $download_url = 'https://www.example.com/wp-content/uploads/plugins/enwikuna-license-manager-client.zip';
+
+    if ( 'plugin_information' !== $action || false !== $result || ! isset( $args->slug ) || 'enwikuna-license-manager-client' !== $args->slug ) {
+        return $result;
+    }
+
+    $result                = new stdClass();
+    $result->name          = 'Enwikuna License Manager Client';
+    $result->version       = '';
+    $result->download_link = esc_url( $download_url );
+
+    return $result;
 }
 
 // Installs a plugin
 function install_plugin( array $plugin_to_install, bool $network_wide = false ): bool {
-	if ( ! empty( $plugin_to_install['repo-slug'] ) ) {
-		require_once ABSPATH . 'wp-admin/includes/file.php';
-		require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
-		require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		
-		WP_Filesystem();
-		
-		$skin              = new Automatic_Upgrader_Skin();
-		$upgrader          = new WP_Upgrader( $skin );
-		$installed_plugins = array_reduce( array_keys( get_plugins() ), 'associate_plugin_file', array() );
-		$plugin_slug       = $plugin_to_install['repo-slug'];
-		$plugin_file       = $plugin_info['file'] ?? ( $plugin_slug . '.php' );
-		$installed         = false;
-		$activate          = false;
-		
-		// See if the plugin is installed already.
-		if ( isset( $installed_plugins[ $plugin_file ] ) ) {
-			$installed = true;
-			$activate  = ! is_plugin_active( $installed_plugins[ $plugin_file ] );
-		}
-		
-		// Install this thing!
-		if ( ! $installed ) {
-			// Suppress feedback.
-			ob_start();
-			
-			try {
-				$plugin_information = plugins_api(
-					'plugin_information',
-					array(
-						'slug'   => $plugin_slug,
-						'fields' => array(
-							'short_description' => false,
-							'sections'          => false,
-							'requires'          => false,
-							'rating'            => false,
-							'ratings'           => false,
-							'downloaded'        => false,
-							'last_updated'      => false,
-							'added'             => false,
-							'tags'              => false,
-							'homepage'          => false,
-							'donate_link'       => false,
-							'author_profile'    => false,
-							'author'            => false,
-						),
-					)
-				);
-				
-				if ( is_wp_error( $plugin_information ) ) {
-					throw new Exception( $plugin_information->get_error_message() );
-				}
-				
-				$package  = $plugin_information->download_link;
-				$download = $upgrader->download_package( $package );
-				
-				if ( is_wp_error( $download ) ) {
-					throw new Exception( $download->get_error_message() );
-				}
-				
-				$working_dir = $upgrader->unpack_package( $download, true );
-				
-				if ( is_wp_error( $working_dir ) ) {
-					throw new Exception( $working_dir->get_error_message() );
-				}
-				
-				$result = $upgrader->install_package(
-					array(
-						'source'                      => $working_dir,
-						'destination'                 => WP_PLUGIN_DIR,
-						'clear_destination'           => false,
-						'abort_if_destination_exists' => false,
-						'clear_working'               => true,
-						'hook_extra'                  => array(
-							'type'   => 'plugin',
-							'action' => 'install',
-						),
-					)
-				);
-				
-				if ( is_wp_error( $result ) ) {
-					throw new Exception( $result->get_error_message() );
-				}
-				
-				$activate = true;
-			} catch ( Exception $e ) {
-				return false;
-			}
-			
-			// Discard feedback.
-			ob_end_clean();
-		}
-		
-		wp_clean_plugins_cache();
-		
-		// Activate this thing.
-		if ( $activate ) {
-			try {
-				if ( $network_wide && ! is_multisite() ) {
-					$network_wide = false;
-				}
-				
-				$result = activate_plugin( $installed ? $installed_plugins[ $plugin_file ] : $plugin_slug . DIRECTORY_SEPARATOR . $plugin_file, '', $network_wide
-				
-				if ( is_wp_error( $result ) ) {
-					throw new Exception( $result->get_error_message() );
-				}
-				
-				return true;
-			} catch ( Exception $e ) {
-				return false;
-			}
-		}
-	}
-	
-	return false;
+    if ( ! empty( $plugin_to_install['repo-slug'] ) ) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+        require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+        require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+        WP_Filesystem();
+
+        $skin              = new Automatic_Upgrader_Skin();
+        $upgrader          = new WP_Upgrader( $skin );
+        $installed_plugins = array_reduce( array_keys( get_plugins() ), 'associate_plugin_file', array() );
+        $plugin_slug       = $plugin_to_install['repo-slug'];
+        $plugin_file       = $plugin_info['file'] ?? ( $plugin_slug . '.php' );
+        $installed         = false;
+        $activate          = false;
+
+        // See if the plugin is installed already.
+        if ( isset( $installed_plugins[ $plugin_file ] ) ) {
+            $installed = true;
+            $activate  = ! is_plugin_active( $installed_plugins[ $plugin_file ] );
+        }
+
+        // Install this thing!
+        if ( ! $installed ) {
+            // Suppress feedback.
+            ob_start();
+
+            try {
+                $plugin_information = plugins_api(
+                    'plugin_information',
+                    array(
+                        'slug'   => $plugin_slug,
+                        'fields' => array(
+                            'short_description' => false,
+                            'sections'          => false,
+                            'requires'          => false,
+                            'rating'            => false,
+                            'ratings'           => false,
+                            'downloaded'        => false,
+                            'last_updated'      => false,
+                            'added'             => false,
+                            'tags'              => false,
+                            'homepage'          => false,
+                            'donate_link'       => false,
+                            'author_profile'    => false,
+                            'author'            => false,
+                        ),
+                    )
+                );
+
+                if ( is_wp_error( $plugin_information ) ) {
+                    throw new Exception( $plugin_information->get_error_message() );
+                }
+
+                $package  = $plugin_information->download_link;
+                $download = $upgrader->download_package( $package );
+
+                if ( is_wp_error( $download ) ) {
+                    throw new Exception( $download->get_error_message() );
+                }
+
+                $working_dir = $upgrader->unpack_package( $download, true );
+
+                if ( is_wp_error( $working_dir ) ) {
+                    throw new Exception( $working_dir->get_error_message() );
+                }
+
+                $result = $upgrader->install_package(
+                    array(
+                        'source'                      => $working_dir,
+                        'destination'                 => WP_PLUGIN_DIR,
+                        'clear_destination'           => false,
+                        'abort_if_destination_exists' => false,
+                        'clear_working'               => true,
+                        'hook_extra'                  => array(
+                            'type'   => 'plugin',
+                            'action' => 'install',
+                        ),
+                    )
+                );
+
+                if ( is_wp_error( $result ) ) {
+                    throw new Exception( $result->get_error_message() );
+                }
+
+                $activate = true;
+            } catch ( Exception $e ) {
+                return false;
+            }
+
+            // Discard feedback.
+            ob_end_clean();
+        }
+
+        wp_clean_plugins_cache();
+
+        // Activate this thing.
+        if ( $activate ) {
+            try {
+                if ( $network_wide && ! is_multisite() ) {
+                    $network_wide = false;
+                }
+
+                $result = activate_plugin( $installed ? $installed_plugins[ $plugin_file ] : $plugin_slug . DIRECTORY_SEPARATOR . $plugin_file, '', $network_wide );
+
+                if ( is_wp_error( $result ) ) {
+                    throw new Exception( $result->get_error_message() );
+                }
+
+                return true;
+            } catch ( Exception $e ) {
+                return false;
+            }
+        }
+    }
+
+    return false;
 }
 
 function is_plugin_installed( string $plugin_slug ): bool {
-	$installed_plugins = get_plugins();
-	$plugin_slug       = check_plugin_slug( $plugin_slug );
-	
-	return array_key_exists( $plugin_slug, $installed_plugins ) || in_array( $plugin_slug, $installed_plugins, true );
+    $installed_plugins = get_plugins();
+    $plugin_slug       = check_plugin_slug( $plugin_slug );
+    
+    return array_key_exists( $plugin_slug, $installed_plugins ) || in_array( $plugin_slug, $installed_plugins, true );
 }
 
 function is_plugin_active( string $plugin_slug, bool $multisite_check = false ): bool {
-	$plugin_slug = check_plugin_slug( $plugin_slug );
-	
-	if ( ( ! is_multisite() || ! $multisite_check ) && is_plugin_active( $plugin_slug ) ) {
-		return true;
-	}
-	
-	if ( $multisite_check && is_multisite() && is_plugin_active_for_network( $plugin_slug ) ) {
-		return true;
-	}
-	
-	return false;
+    $plugin_slug = check_plugin_slug( $plugin_slug );
+
+    if ( ( ! is_multisite() || ! $multisite_check ) && is_plugin_active( $plugin_slug ) ) {
+        return true;
+    }
+
+    if ( $multisite_check && is_multisite() && is_plugin_active_for_network( $plugin_slug ) ) {
+        return true;
+    }
+
+    return false;
 }
 
 function check_plugin_slug( string $plugin_slug ): string {
-	if ( false === strpos( $plugin_slug, '.php' ) ) {
-		$plugin_slug = trailingslashit( $plugin_slug ) . $plugin_slug . '.php';
-	}
-	
-	return $plugin_slug;
+    if ( false === strpos( $plugin_slug, '.php' ) ) {
+        $plugin_slug = trailingslashit( $plugin_slug ) . $plugin_slug . '.php';
+    }
+    
+    return $plugin_slug;
 }
 
 function associate_plugin_file( array $plugins, string $key ): array {
-	$path                 = explode( DIRECTORY_SEPARATOR, $key );
-	$filename             = end( $path );
-	$plugins[ $filename ] = $key;
-	
-	return $plugins;
+    $path                 = explode( DIRECTORY_SEPARATOR, $key );
+    $filename             = end( $path );
+    $plugins[ $filename ] = $key;
+    
+    return $plugins;
 }
 ```
 
@@ -459,18 +459,6 @@ client automatically!
 ### Install the client from a theme during theme activation
 
 ```php
-add_action( 'after_switch_theme', 'after_switch_theme_action' );
-function after_switch_theme_action() {
-	if ( ! is_plugin_installed( 'enwikuna-license-manager-client' ) && ! is_plugin_active( 'enwikuna-license-manager-client' ) ) {
-		install_plugin(
-			array(
-				'name'      => 'Enwikuna License Manager Client',
-				'repo-slug' => 'enwikuna-license-manager-client',
-			),
-			true
-		);
-	}
-}
 add_action( 'after_switch_theme', 'after_switch_theme_action' );
 function after_switch_theme_action() {
     if ( ! is_plugin_installed( 'enwikuna-license-manager-client' ) && ! is_plugin_active( 'enwikuna-license-manager-client' ) ) {
@@ -490,15 +478,15 @@ function after_switch_theme_action() {
 ```php
 register_activation_hook( __FILE__, 'install' );
 function install() {
-	if ( ! is_plugin_installed( 'enwikuna-license-manager-client' ) && ! is_plugin_active( 'enwikuna-license-manager-client' ) ) {
-		install_plugin(
-			array(
-				'name'      => 'Enwikuna License Manager Client',
-				'repo-slug' => 'enwikuna-license-manager-client',
-			),
-			true
-		);
-	}
+    if ( ! is_plugin_installed( 'enwikuna-license-manager-client' ) && ! is_plugin_active( 'enwikuna-license-manager-client' ) ) {
+        install_plugin(
+            array(
+                'name'      => 'Enwikuna License Manager Client',
+                'repo-slug' => 'enwikuna-license-manager-client',
+            ),
+            true
+        );
+    }
 }
 ```
 
