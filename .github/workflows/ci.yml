@@ -32,7 +32,10 @@ jobs:
           mkdir -p ../prepack/$PLUGIN_NAME
 
       - name: Copy content to prepack folder
-        run: rsync -rav --exclude=".*" --exclude="composer.*" --exclude="phpcs.xml" --exclude="__MACOSX" . ../prepack/$PLUGIN_NAME
+        run: |
+          pwd
+          ls -la
+          rsync -rav --exclude=".*" --exclude="composer.*" --exclude="phpcs.xml" --exclude="__MACOSX" . ../prepack/$PLUGIN_NAME
 
       - name: Create release ZIP artifact
         run: |
