@@ -6,7 +6,7 @@ on:
       - 'v*'
 
 env:
-  PLUGIN_NAME: "enwikuna-license-manager-client"
+  SLUG: "enwikuna-license-manager-client"
 
 permissions:
   contents: write
@@ -28,23 +28,23 @@ jobs:
 
       - name: Create prepack folder
         run: |
-          rm -rf ../prepack/$PLUGIN_NAME
-          mkdir -p ../prepack/$PLUGIN_NAME
+          rm -rf ../prepack/$SLUG
+          mkdir -p ../prepack/$SLUG
 
       - name: Copy content to prepack folder
-        run: rsync -rav --exclude=".*" --exclude="composer.*" --exclude="[dD][oO][cC][kK][eE][rR]*" --exclude="output.log" --exclude="phpcs.xml" --exclude="__MACOSX" . ../prepack/$PLUGIN_NAME
+        run: rsync -rav --exclude=".*" --exclude="composer.*" --exclude="[dD][oO][cC][kK][eE][rR]*" --exclude="output.log" --exclude="phpcs.xml" --exclude="__MACOSX" . ../prepack/$SLUG
 
       - name: Create release ZIP artifact
         run: |
           cd ../prepack
-          zip -r ../$PLUGIN_NAME/$PLUGIN_NAME.zip $PLUGIN_NAME
-          cd ../$PLUGIN_NAME
+          zip -r ../$SLUG/$SLUG.zip $SLUG
+          cd ../$SLUG
 
       - name: Upload release ZIP artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ env.PLUGIN_NAME }}.zip
-          path: ${{ github.workspace }}/${{ env.PLUGIN_NAME }}.zip
+          name: ${{ env.SLUG }}.zip
+          path: ${{ github.workspace }}/${{ env.SLUG }}.zip
 
   release:
     name: Release
@@ -54,7 +54,7 @@ jobs:
       - name: Download release ZIP artifact
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.PLUGIN_NAME }}.zip
+          name: ${{ env.SLUG }}.zip
           path: ${{ github.workspace }}
 
       - name: Create GitHub release
@@ -74,6 +74,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/${{ env.PLUGIN_NAME }}.zip
-          asset_name: ${{ env.PLUGIN_NAME }}.zip
+          asset_path: ${{ github.workspace }}/${{ env.SLUG }}.zip
+          asset_name: ${{ env.SLUG }}.zip
           asset_content_type: application/zip

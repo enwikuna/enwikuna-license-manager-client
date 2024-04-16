@@ -145,3 +145,6 @@ composer.phar
 
 # Local config See: https://cs.symfony.com/doc/config.html
 .php-cs-fixer.php
+
+# Hooks
+*-hooks.json
