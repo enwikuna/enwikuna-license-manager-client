@@ -80,7 +80,7 @@ class ELMC_Request implements ELMC_Request_Interface {
 			$request_url = $this->api_url . $action . '/' . $license_key;
 		}
 
-		$response = wp_safe_remote_request( $request_url, wp_parse_args( $default_args, $args ) );
+		$response = wp_remote_request( $request_url, wp_parse_args( $default_args, $args ) );
 
 		if ( ! empty( $response ) && empty( $response->errors ) ) {
 			$this->response_code = wp_remote_retrieve_response_code( $response );
