@@ -416,6 +416,10 @@ function install_plugin( array $plugin_to_install, bool $network_wide = false ):
 }
 
 function is_plugin_installed( string $plugin_slug ): bool {
+    if ( ! function_exists( 'get_plugins' ) ) {
+        require_once ABSPATH . 'wp-admin/includes/plugin.php';
+    }
+    
     $installed_plugins = get_plugins();
     $plugin_slug       = check_plugin_slug( $plugin_slug );
     
