@@ -302,6 +302,16 @@ public function has_expired(): bool {
 }
 ```
 
+#### Proper usage of the defined functions
+
+You can now call the defined functions to do some checks.
+
+```php
+if ( $this->is_registered() && ! $this->has_expired() ) {
+    // Integrate your main classes or load stuff which should be available if the license is registered and has not expired
+}
+```
+
 ### Test if everything works
 
 After following all the above steps, your client should be ready to use! You can now test the client by creating a new
