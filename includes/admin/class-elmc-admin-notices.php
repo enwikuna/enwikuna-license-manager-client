@@ -90,14 +90,9 @@ class ELMC_Admin_Notices extends ELMC_Singleton_Abstract implements ELMC_Admin_N
 	 * Handles adding of default plugin notices
 	 */
 	public function wp_loaded_action(): void {
-		global $pagenow;
-
 		if ( ELMC_Dependencies::get_instance()->is_loadable() ) {
 			$this->network_activation_required_notice();
-
-			if ( 'plugins.php' === $pagenow ) {
-				$this->connection_issue_notice();
-			}
+			$this->connection_issue_notice();
 
 			if ( ! is_multisite() || ( is_multisite() && is_blog_admin() ) ) {
 				$this->products_expiring_notice();
@@ -411,7 +406,7 @@ class ELMC_Admin_Notices extends ELMC_Singleton_Abstract implements ELMC_Admin_N
 							'class'       => 'update',
 							'include_on'  => array( 'update-core' ),
 							'attrs'       => array(
-								'data-for-plugin="' . md5( $products[ $file ]->get_name() ) . '"',
+								'data-for-plugin="' . md5( $file ) . '"',
 								'style="margin: 12px 0 0;"',
 							),
 						);
@@ -480,6 +475,7 @@ class ELMC_Admin_Notices extends ELMC_Singleton_Abstract implements ELMC_Admin_N
 					'size'    => 'h3',
 					'content' => sprintf( esc_html__( 'Enwikuna License Manager Client is unable to connect to %1$s', 'enwikuna-license-manager-client' ), Constants::get_constant( 'ELMC_COMPANY_NAME' ) ),
 				),
+				'include_on'  => array( 'plugins' ),
 				'dismissible' => false,
 			);
 

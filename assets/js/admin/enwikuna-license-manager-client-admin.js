@@ -21,5 +21,9 @@
                 }, 50 );
             }
         } );
+
+        $( '.plugin-update .update-message .update-link' ).click( function () {
+            $( this ).closest( '.update-message' ).find( '.elmc-upgrade-notice' ).remove();
+        } );
     } );
 })( jQuery );

@@ -8,4 +8,10 @@ $main-color: #b4004e;
   &.notice-info {
     border-left-color: $main-color;
   }
+
+  &.elmc-notice-update strong {
+    display: inline-block;
+    margin: 0;
+    font-size: inherit;
+  }
 }

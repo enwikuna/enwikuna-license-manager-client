@@ -248,6 +248,60 @@ function filter_elmc_product_slug_renewal_url( string $renewal_url, ELMC_Product
 }
 ```
 
+### Check the license status inside your product
+
+To hide or disable things inside your plugin if the license is not activated or has expired, you can build some custom
+functions which will allow you to do this. The following code snippets can be used to perform all relevant checks. We
+would suggest that you put the following code parts inside your main product class but that's on you.
+
+#### Get the product from the client
+
+You can use this function to get the current product from the client. The returned product can be further used for
+several checks. You may need to change the `__FILE__` constant to the correct path pointing to your main product file
+e.g. main PHP file of a plugin which is located inside the root folder of your plugin.
+
+```php
+public function get_product() {
+    if ( class_exists( ELMC::class ) ) {
+        return ELMC::get_instance()->get_product( plugin_basename( __FILE__ ) );
+    }
+    
+    return false;
+}
+```
+
+#### Check registration status
+
+This code can be used to check if the license of the product is registered inside the client.
+
+```php
+public function is_registered(): bool {
+    $product = $this->get_product();
+    
+    if ( ! empty( $product ) ) {
+        return $product->is_registered();
+    }
+    
+    return false;
+}
+```
+
+#### Check expiration status
+
+This code can be used to check if the license of the product has expired.
+
+```php
+public function has_expired(): bool {
+    $product = $this->get_product();
+    
+    if ( ! empty( $product ) ) {
+        return $product->has_expired();
+    }
+    
+    return false;
+}
+```
+
 ### Test if everything works
 
 After following all the above steps, your client should be ready to use! You can now test the client by creating a new
