@@ -40,7 +40,7 @@ client requires the Enwikuna License Manager REST API to work correctly, you nee
 installed and activated on your WordPress site where you want to sell your licenses:
 
 - [Enwikuna License Manager](https://wordpress.org/plugins/enwikuna-license-manager/)
-- [Enwikuna License Manager Pro](https://agency.enwikuna.de/en/store/enwikuna-license-manager-pro/)
+- [Enwikuna License Manager Pro](https://agency.enwikuna.de/en/enwikuna-license-manager/)
 
 ## Getting Started
 
