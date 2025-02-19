@@ -51,8 +51,7 @@ class ELMC_Plugin extends ELMC_Product_Abstract implements ELMC_Plugin_Interface
 		}
 
 		if ( function_exists( 'get_plugin_data' ) && function_exists( '_get_plugin_data_markup_translate' ) ) {
-			$plugin_data        = get_plugin_data( WP_PLUGIN_DIR . '/' . $file );
-			$this->product_meta = _get_plugin_data_markup_translate( $file, $plugin_data, false );
+			$this->product_meta = get_plugin_data( WP_PLUGIN_DIR . '/' . $file, false, false );
 		}
 	}
 
@@ -68,6 +67,8 @@ class ELMC_Plugin extends ELMC_Product_Abstract implements ELMC_Plugin_Interface
 			$meta_key = 'Plugin' . $meta_key;
 		}
 
-		return $this->product_meta[ $meta_key ] ?? '';
+		$translated_product_meta = _get_plugin_data_markup_translate( $this->file, $this->product_meta );
+
+		return $translated_product_meta[ $meta_key ] ?? '';
 	}
 }

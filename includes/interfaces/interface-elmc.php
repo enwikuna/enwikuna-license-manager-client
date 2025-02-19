@@ -20,9 +20,9 @@ interface ELMC_Interface {
 	public function __construct();
 
 	/**
-	 * Core plugins loaded action
+	 * Core init action
 	 */
-	public function core_plugins_loaded_action(): void;
+	public function core_init_action(): void;
 
 	/**
 	 * Default plugins loaded action

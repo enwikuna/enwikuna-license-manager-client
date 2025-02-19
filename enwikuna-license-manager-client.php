@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Enwikuna License Manager Client
  * Description: Will help customers to manage their licenses provided by the Enwikuna License Manager and receive automatic updates via releases.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Enwikuna
  * Author URI: https://agency.enwikuna.de
  * Plugin URI: https://github.com/enwikuna/enwikuna-license-manager-client
@@ -10,7 +10,7 @@
  * Domain Path: /i18n/languages/
  * Requires at least: 5.4.0
  * Requires PHP: 7.4.0
- * Tested up to: 6.5.2
+ * Tested up to: 6.7.2
  *
  * @package Enwikuna\Enwikuna_License_Manager_Client
  */

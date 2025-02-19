@@ -113,15 +113,15 @@ abstract class ELMC_Product_Abstract implements ELMC_Product_Interface {
 		$this->id           = $product_id;
 		$this->free         = $args['free'];
 		$this->setup_wizard = $args['setup_wizard'];
-		$this->slug         = sanitize_title( $this->get_name() );
+		$this->slug         = dirname( $file );
 
 		$registered_products = ELMC::get_instance()->get_registered_products();
 
-		if ( isset( $registered_products[ $this->file ] ) ) {
-			$this->license_key = $registered_products[ $this->file ]['license_key'] ?? '';
-			$this->host        = $registered_products[ $this->file ]['host'] ?? '';
-			$this->expires     = $registered_products[ $this->file ]['expires'] ?? '';
-			$this->status      = $registered_products[ $this->file ]['status'] ?? '';
+		if ( isset( $registered_products[ $file ] ) ) {
+			$this->license_key = $registered_products[ $file ]['license_key'] ?? '';
+			$this->host        = $registered_products[ $file ]['host'] ?? '';
+			$this->expires     = $registered_products[ $file ]['expires'] ?? '';
+			$this->status      = $registered_products[ $file ]['status'] ?? '';
 		}
 	}
 

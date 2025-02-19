@@ -24,7 +24,7 @@ class ELMC extends ELMC_Singleton_Abstract implements ELMC_Interface {
 	 *
 	 * @var string
 	 */
-	public string $version = '1.0.0';
+	public string $version = '1.0.1';
 
 	/**
 	 * The signing key used to support signed releases
@@ -88,7 +88,7 @@ class ELMC extends ELMC_Singleton_Abstract implements ELMC_Interface {
 	 * Init / setup important core hooks from WP -> used in dependency check too
 	 */
 	private function init_core_hooks(): void {
-		add_action( 'plugins_loaded', array( $this, 'core_plugins_loaded_action' ) );
+		add_action( 'init', array( $this, 'core_init_action' ), 0 );
 	}
 
 	/**
@@ -163,9 +163,9 @@ class ELMC extends ELMC_Singleton_Abstract implements ELMC_Interface {
 	}
 
 	/**
-	 * Core plugins loaded action
+	 * Core init action
 	 */
-	public function core_plugins_loaded_action(): void {
+	public function core_init_action(): void {
 		$this->load_plugin_textdomain();
 	}
 
@@ -173,8 +173,7 @@ class ELMC extends ELMC_Singleton_Abstract implements ELMC_Interface {
 	 * Default plugins loaded action
 	 */
 	public function plugins_loaded_action(): void {
-		$this->main_init_classes();
-		$this->init_action();
+		$this->maybe_register_products();
 	}
 
 	/**
@@ -183,15 +182,8 @@ class ELMC extends ELMC_Singleton_Abstract implements ELMC_Interface {
 	 * @return void
 	 */
 	public function init_action(): void {
-		if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
-			require_once ABSPATH . '/wp-admin/includes/plugin.php';
-		}
-
-		if ( is_multisite() && ! is_network_admin() && ! is_plugin_active_for_network( Constants::get_constant( 'ELMC_PLUGIN_BASENAME' ) ) ) {
-			return;
-		}
-
-		$this->register_products();
+		$this->main_init_classes();
+		$this->maybe_register_products();
 	}
 
 	/**
@@ -212,6 +204,23 @@ class ELMC extends ELMC_Singleton_Abstract implements ELMC_Interface {
 		unload_textdomain( 'enwikuna-license-manager-client' );
 		load_textdomain( 'enwikuna-license-manager-client', Constants::get_constant( 'ELMC_LANG_DIR' ) . 'enwikuna-license-manager-client-' . $locale . '.mo' );
 		load_plugin_textdomain( 'enwikuna-license-manager-client', false, Constants::get_constant( 'ELMC_LANG_DIR' ) );
+	}
+
+	/**
+	 * Maybe register products
+	 *
+	 * @return void
+	 */
+	private function maybe_register_products(): void {
+		if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/plugin.php';
+		}
+
+		if ( is_multisite() && ! is_network_admin() && ! is_plugin_active_for_network( Constants::get_constant( 'ELMC_PLUGIN_BASENAME' ) ) ) {
+			return;
+		}
+
+		$this->register_products();
 	}
 
 	/**
