@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         uses: php-actions/composer@v6
@@ -41,7 +41,7 @@ jobs:
           cd ../$SLUG
 
       - name: Upload release ZIP artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.SLUG }}.zip
           path: ${{ github.workspace }}/${{ env.SLUG }}.zip
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download release ZIP artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ env.SLUG }}.zip
           path: ${{ github.workspace }}
