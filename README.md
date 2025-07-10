@@ -18,7 +18,7 @@ The idea behind the Enwikuna License Manager Client is to provide a simple and e
 don't need to implement your own client for the Enwikuna License Manager REST API. It's specially made to manage
 themes & plugins inside WordPress by using standard WordPress functions and hooks.
 
-![Enwikuna License Manager Client](https://agency.enwikuna.de/wp-content/uploads/enwikuna-license-manager-client.png)
+![Enwikuna License Manager Client](https://www.enwikuna.de/wp-content/uploads/enwikuna-license-manager-client.png)
 
 ## Features
 
@@ -40,7 +40,7 @@ client requires the Enwikuna License Manager REST API to work correctly, you nee
 installed and activated on your WordPress site where you want to sell your licenses:
 
 - [Enwikuna License Manager](https://wordpress.org/plugins/enwikuna-license-manager/)
-- [Enwikuna License Manager Pro](https://agency.enwikuna.de/en/enwikuna-license-manager/)
+- [Enwikuna License Manager Pro](https://www.enwikuna.de/en/products/enwikuna-license-manager/)
 
 ## Getting Started
 
@@ -68,7 +68,7 @@ license for the client inside your store! This way, you are able to update the c
    Manager Pro and create a new product there. Name it `Enwikuna License Manager Client` and set the **visibility** of
    the product to **private**.
 2) After that, you need to mark the product as a license as
-   described [here](https://agency.enwikuna.de/en/docs/enwikuna-license-manager-how-tos-en/enwikuna-license-manager-create-new-license-products/),
+   described [here](https://www.enwikuna.de/en/docs/enwikuna-license-manager-how-tos-en/enwikuna-license-manager-create-new-license-products/),
    as a virtual and downloadable product.
 3) Now you need to go to the license tab and generate a new UUID for the product. Save it for later!
 4) Finally, go to the general settings tab of the product and add a new downloadable file. The name of the file should
@@ -113,7 +113,7 @@ define( 'ELMC_REST_API_URL', 'https://your-page.com/wp-json/elm/v1/' );
 
 This constant contains the REST API key of the Enwikuna License Manager. You can create a new key inside the REST API
 settings. You can check out
-the [documentation](https://agency.enwikuna.de/en/docs/enwikuna-license-manager-configuration-en/enwikuna-license-manager-settings/)
+the [documentation](https://www.enwikuna.de/en/docs/enwikuna-license-manager-configuration-en/enwikuna-license-manager-settings/)
 about the settings to understand how to create a new key. The key needs to have the following permissions:
 
 - Permission `Read / Write`
@@ -561,5 +561,5 @@ function install() {
 ## Support
 
 Please note that we don't offer support for any custom code! If you need custom coding, please contact us via our chat
-on our [website](https://agency.enwikuna.de/en/)! If you have any questions about the client, please create a new issue
+on our [website](https://www.enwikuna.de/en/)! If you have any questions about the client, please create a new issue
 inside the GitHub repository!

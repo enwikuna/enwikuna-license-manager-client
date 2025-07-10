@@ -4,7 +4,7 @@
  * Description: Will help customers to manage their licenses provided by the Enwikuna License Manager and receive automatic updates via releases.
  * Version: 1.0.1
  * Author: Enwikuna
- * Author URI: https://agency.enwikuna.de
+ * Author URI: https://www.enwikuna.de
  * Plugin URI: https://github.com/enwikuna/enwikuna-license-manager-client
  * Text Domain: enwikuna-license-manager-client
  * Domain Path: /i18n/languages/

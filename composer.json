@@ -1,7 +1,7 @@
 {
   "name": "enwikuna/enwikuna-license-manager-client",
   "description": "Will help customers to manage their licenses provided by the Enwikuna License Manager and receive automatic updates via releases.",
-  "homepage": "https://agency.enwikuna.de",
+  "homepage": "https://www.enwikuna.de",
   "version": "1.0.1",
   "license": [
     "GPL-3.0-or-later"
